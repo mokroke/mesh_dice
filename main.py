@@ -10,6 +10,10 @@ def parse_coordinates(coordinates):
     coordinates = coordinates.replace("(", "").replace(")", "")
     # カンマで分割してlatとlngに格納
     lat, lng = coordinates.split(",")
+    if "°" in lat:
+        lat = lat.replace(("°", "")).replace(("N", ""))
+        lng = lng.replace(("°", "")).replace(("E", ""))
+
     return float(lat), float(lng)
 
 
@@ -58,7 +62,7 @@ def main():
 
     ##入力情報
     coordinates_input = st.text_input(
-        "Enter coordinates (e.g., 35.10207863776157, 134.00614494784006):"
+        "緯度経度を入力してください (例： 35.10207863776157, 134.00614494784006):"
     )
 
     # 入力が空でない場合のみ処理
@@ -67,7 +71,7 @@ def main():
         lat, lng = parse_coordinates(coordinates_input)
 
         # 結果を表示
-        # st.write(f"Latitude: {lat},Longitude: {lng}")
+        st.write(f"Latitude: {lat},Longitude: {lng}")
 
         latlon = wm.meshcode_to_latlong_grid(meshcode3)
 
