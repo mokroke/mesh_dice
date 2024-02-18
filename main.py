@@ -11,8 +11,8 @@ def parse_coordinates(coordinates):
     # カンマで分割してlatとlngに格納
     lat, lng = coordinates.split(",")
     if "°" in lat:
-        lat = lat.replace(("°", "")).replace(("N", ""))
-        lng = lng.replace(("°", "")).replace(("E", ""))
+        lat = lat.replace("°", "").replace("N", "")
+        lng = lng.replace("°", "").replace("E", "")
 
     return float(lat), float(lng)
 
