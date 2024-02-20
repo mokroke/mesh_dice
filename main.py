@@ -76,11 +76,12 @@ def main():
         latlon = wm.meshcode_to_latlong_grid(meshcode3)
 
         # ポリゴンの頂点座標を定義
+
         polygon_coordinates = [
             (latlon["lat0"], latlon["long0"]),
-            (latlon["lat1"], latlon["long0"]),
             (latlon["lat0"], latlon["long1"]),
             (latlon["lat1"], latlon["long1"]),
+            (latlon["lat1"], latlon["long0"]),
         ]
 
         # ポリゴンを作成
